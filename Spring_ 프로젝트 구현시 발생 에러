@@ -1,0 +1,20 @@
+스프링 프로젝트 테스트 및 구현 시 발생 에러
+
+1) java.lang.Error: Unresolved compilation problem: Autowired cannot be resolved to a type
+인포트 코드 추가로 해결
+-> import org.springframework.beans.factory.annotation.Autowired;
+
+2) illegal reflective access by org.apache.ibatis.reflection.reflector
+junit 의 버전이 맞지 않아 생기는 에러
+-> 3.4.1 >> 3.5.2로 업데이트
+
+3) No mapping found for HTTP request with URI
+매핑할 uri를 찾지 못함
+-> app Servlet > servlet-context.xml 에 <resources mapping="/test1/*" location="/test1/ex1/" /> 매핑하고자 하는 주소 입력
+
+4) there are '37' errors in 'https://java.sun.com/xml/ns/javaee/jsp_2_1.xsd'.
+프로젝트 생성 시 web.xml에 발생한 에러
+-> xsi 라인에 url 세미콜론(;)확인
+
+5) required long parameter 'bno' is not present // 400에러
+스트링쿼리로 controller로 값을 보내고 받아오는 과정에서 에러가 발생
