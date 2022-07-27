@@ -18,3 +18,15 @@ junit 의 버전이 맞지 않아 생기는 에러
 
 5) required long parameter 'bno' is not present // 400에러
 스트링쿼리로 controller로 값을 보내고 받아오는 과정에서 에러가 발생
+
+6) an error has occurred. see error log for more details.
+이클립스 실행 시 경고창
+-> workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xml 파일 삭제
+
+7) syntax error, annotations are only available if source level is 1.5 or greater
+이클립스의 자바 컴파일러 버전설정이 코드와 맞지 않아 발생하는 오류
+-> window>>Preferences>>java>>Compiler 에서 Compiler Compiler level 확인
+
+8) failed to create the part's controls eclipse maven
+maven project pom.xml 파일이 열리지 않음.
+-> Open With 에서 XML Editor 로 열기
