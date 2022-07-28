@@ -1,0 +1,66 @@
+ExamConsole console = new InlineExamConsole();
+위와 같은 강한 결합으로 코드를 구성하면 java에 명령을 수정할  때마다 구성된 클래스 코드들을 수정해주어야하는 불편함이 존재
+이와 같은 불편함을 해소하기 위해 <bean>을 통해 속성구성
+
+<property name="exam" ref="exam"></property>
+ref 와 value 값을 지정해줄 수 있는데 ref는 값을 참조할 경우, value는 사용자 값을 지정할 때 사용
+
+-------------------------------------------------------------------------------------------------------------------------
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml"); 로 연결
+-------------------------------------------------------------------------------------------------------------------------
+
+* GenericXmlApplicationContext는 클래스 패스뿐만 아니라다양한소스로부터 설정파일을 읽어올 수 있음.
+* ClassPathXmlApplicationContext는 xml파일을 클래스패스에서 가져올 때 사용
+* GenericXmlApplicationContextrk 이 xml 설정파일을 사용하게 하려면 클래스패스 루트로 부터 파일의 위치를 지정해야하므로 패키지가 길어지면 클래스패스를 모두 적어주어야 함.
+* ClassPathXmlApplicationContext는 xml 파일과 같은 클래스패스에 있는 클래스 오브젝트를 넘겨서 클래스패스에 대한 힌트를 제공
+
+<setter를 이용한 값 설정>
+<!-- Exam exam = new NewLecExam(); --> : # 위 java코드를 bean으로 정의하여 xml 파일로 사용
+	<bean id="exam" class="spring.di.entity.NewLecExam" >
+		<property name="kor" value="10"></property>
+		<property name="eng" value="20"></property>
+		<property name="mat" value="30"></property>
+		<property name="com"> -->
+			<value> 40 </value> -->
+		</property> -->
+
+<생성자를 이용한 값 설정 -->
+<!--  index 지정 -->
+	<constructor-arg index="3" value="90" />
+	<constructor-arg index="0" value="100" />
+	<constructor-arg index="2" value="70" /> 
+	<constructor-arg index="1" value="100" />
+
+<!-- name과 index 혼합 사용 가능 -->
+	<constructor-arg name="kor" value="12" />
+	<constructor-arg index="3" value="18" />
+
+</bean>
+
+<1-- p를 사용해 한가지 값, 또는 원하는 값만 설정 -->
+<bean id="exam" class="spring.di.entity.NewLecExam" p:kor="12" />
+<bean id="exam" class="spring.di.entity.NewLecExam" p:kor="12" p:eng="24"></bean>
+
+
+----------------------------------------------------------------------------------------------------
+
+<bean id="exams" class="java.util.ArrayList" >
+	<constructor-arg>
+		<list>
+			<bean class="spring.di.entity.NewLecExam" p:kor="12" p:eng="24" />
+			<ref bean="exam" />
+		</list>
+	</constructor-arg>
+</bean>
+
+와
+
+<util:list id="exams" list-class="java.util.ArrayList">
+	<bean class="spring.di.entity.NewLecExam" p:kor="12" p:eng="24" />
+	<ref bean="exam" />
+</util:list>
+
+는 같은 결과를 출력
