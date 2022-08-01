@@ -1,0 +1,23 @@
+- 문서 형식 선언(Document Type Declaration) 또는 DOCTYPE
+	: 어떤 SGML이나 XML 기반 문서 내에 그 문서가 특정 문서 형식 정의(DTD)를 따름을 지정
+
+1)
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+2)
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+3) 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" 
+"http://www.w3.org/TR/html4/frameset.dtd">
+
+아래 DTD는 위 DTD와 달리 모든 HTML 요소와 속성들, 더 이상 사용되지 않거나 아직 정식으로 포함되지 못한 요소들까지도 모두 포함하며, 프레임셋(frameset) 콘텐츠의 사용까지 허용함.
+
+4) 버전 5부터는 간단하게 선언 가능
+<!DOCTYPE HTML>
+
