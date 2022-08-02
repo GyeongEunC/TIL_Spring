@@ -1,0 +1,12 @@
+- [root-context.xml] 중 mapper 부분
+
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:/mybatis-config.xml" />
+	<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
+</bean>
+
+* <property name="configLocation" value="classpath:/mybatis-config.xml" /> 에서 mybatis-config.xml 파일은 src/main/resources 안에 생성
+
+* <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
+	src/main/resources안에 mappers 폴더 생성 후 폴더 안에 (  )Mapper.xml 로 파일 생성 ( )안에는 사용자 지정이름이지만 뒤에 파일명은 Mapper.xml로 생성해야 함.
