@@ -1,0 +1,15 @@
+xml 파일을 mapper로서의 기능을 하도록 만드는데, 이때 가장 중요한 것은 namespace 속성 값을 앞에서 생성하고 작성한 Mapper 인터페이스의 경로를 포함하는 인터페이스 이름을 작성해야한다는 점.
+
+namespace 속성 값이 중요한 이유는 MyBatis가 Mapper 인터페이스와  xml을 인터페이스 이름과 namespace 속성값을 가지고 판단하기 때문.
+인터페이스 이름과 namespace 속성값이 동일한 이름이면 이를 병합해서 처리하는데, 이러한 경우에는 메서드 선언은 인터페이스에서 존재하고 sql에 대한 처리는 xml을 이용함.
+
+패키지명 : com.vam.mapper
+클래스명 : BoardMapper(.java)
+
+xml파일에서 namespace : 
+<mapper namespace="com.vam.mapper.BoardMapper">
+</mapper>
+
+값이 들어가야하는 구문에는 Mapper 인터페이스에서 선언한 enroll() 메서드의 파라미터 BoardVO 클래스의 멤버 변수명을 #{} 을 붙여 작성
+#{title}의 경우 getTitle()/setTitel()을 의미
+따라서 BoardVO 멤버 변수인 title, content, writer에 값이 담긴 경우 그 값들이 #{title}, #{content}, #{writer} 대체하여 sql문이 실행됨.
