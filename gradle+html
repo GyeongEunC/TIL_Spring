@@ -1,0 +1,24 @@
+gradle 프로젝트 생성 시
++ html 로 view
+
+경로 : src/main/resources/templates/index.html
+설정파일 생성
+src/main/java 밑에 config 파일 생성후 하위에 MvcConfiguration.java 생성
+<
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.CacheControl;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class MvcConfiguration implements WebMvcConfigurer {
+
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**")
+				.addResourceLocations("classpath:/templates/")
+				.setCacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES));
+	}
+}
+> 위 코드를 설정해주어야 static이 아닌 templates에서 html파일을 읽어 출력해줌
